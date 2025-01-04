@@ -1,20 +1,30 @@
 from rest_framework import serializers
+
 from pacientes.models import Pacientes
+from agendamentos.api.serializers import AgendamentosSerializers
+
 
 class PacientesSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Pacientes # utilizada o arquivo model do Paciente como padrão
+        model = Pacientes
         fields = '__all__'
 
 
-    """
-            
-            A classe Meta está recebendo em seu atributo model, Pacientes, isso significa que
-        que estamos tornando padrão o arquivo models do pacote paciente.
-        
-            O atributo fields será setado como "__all__" ordenando assim que utilizemos todos
-        os atributos contidos em models, caso desejamos pegar atributos específicos, devemos
-        passar uma lista ou tupo de strings com os nomes dos atributos desejados. 
-    
-    
-    """
+
+class PacientesDetalhesSerializer(serializers.ModelSerializer):
+    agendamentos = AgendamentosSerializers(many=True, read_only=True)
+
+    class Meta:
+        model = Pacientes
+        fields = [
+            'id_paciente',
+            'nome',
+            'nascimento',
+            'endereco',
+            'num_endereco',
+            'bairro',
+            'cep',
+            'data_cadastro',
+            'rg',
+            'agendamentos'
+        ]

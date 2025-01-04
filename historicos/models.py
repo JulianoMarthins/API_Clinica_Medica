@@ -15,8 +15,7 @@ class Historico(models.Model):
     conclusao = models.TextField(max_length=100, blank=True, null=True)
 
     # Relações
-    id_agendamento = models.ForeignKey(
-        Agendamentos, related_name='historicos', on_delete=models.CASCADE)
+    id_agendamento = models.ForeignKey(Agendamentos, related_name='historicos', on_delete=models.CASCADE)
 
 
     class Meta:
