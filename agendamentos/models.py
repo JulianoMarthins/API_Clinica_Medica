@@ -12,7 +12,7 @@ class Agendamentos(models.Model):
     obs = models.TextField()
     tipo = models.CharField(max_length=100)
 
-    id_paciente = models.ForeignKey(Pacientes, on_delete=models.CASCADE)
+    id_paciente = models.ForeignKey(Pacientes, on_delete=models.CASCADE, related_name='agendamentos')
 
 
 

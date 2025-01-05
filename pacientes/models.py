@@ -18,7 +18,7 @@ class Pacientes(models.Model):
     class Meta:
         managed = True # Significa que a table poderá ser trabalhada pelo programador
         db_table = 'pacientes' # O nome da tabela será pacientes.
-
+        #unique_together = ('data_hora', 'id_paciente')
 
 
 

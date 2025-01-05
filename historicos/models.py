@@ -19,5 +19,5 @@ class Historico(models.Model):
 
 
     class Meta:
-        managed=True
+        managed = True
         db_table = 'historicos'
